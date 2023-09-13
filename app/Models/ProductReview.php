@@ -26,4 +26,8 @@ class ProductReview extends Model
      * @var string[]
      */
     protected $hidden = [];
+
+    public function product(){
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
 }

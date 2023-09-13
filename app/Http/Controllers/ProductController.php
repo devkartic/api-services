@@ -14,7 +14,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('name')->get();
+        $products = Product::all();
+        foreach ($products as $product){
+            $product->category_name = $product->category()->pluck('name')->first();
+            $product->images = $product->images()->get();
+            $product->reviews = $product->reviews()->get();
+        }
         return response()->json($products);
     }
 
