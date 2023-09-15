@@ -13,9 +13,6 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
-
+$router->get('/', 'WebsiteController@index');
 $router->get('products', 'ProductController@index');
 $router->get('categories', 'CategoryController@index');
