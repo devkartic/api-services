@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\CategoryRelation;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $category_relations = CategoryRelation::all();
+
+        $categories =[];
+
+        foreach ($category_relations as $category_relation){
+            $category_relation->category->category_parent_id = $category_relation->category_parent_id;;
+            $categories[] = $category_relation->category;
+        }
+
         return response()->json($categories);
     }
 
@@ -45,9 +54,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
-        //
+        $category = Category::find($id);
+
+        if(empty($category)) return response(view('website.exceptions.404'));
+
+        return response()->json($category);
     }
 
     /**

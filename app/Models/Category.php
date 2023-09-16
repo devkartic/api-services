@@ -27,6 +27,10 @@ class Category extends Model
      */
     protected $hidden = [];
 
+    public function parent(){
+        return $this->hasMany(CategoryRelation::class);
+    }
+
     public function products(){
         return $this->hasMany(Product::class);
     }
