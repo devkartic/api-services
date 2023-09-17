@@ -15,14 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category_relations = CategoryRelation::all();
-
-        $categories =[];
-
-        foreach ($category_relations as $category_relation){
-            $category_relation->category->category_parent_id = $category_relation->category_parent_id;;
-            $categories[] = $category_relation->category;
-        }
+        $categories = Category::all();
 
         return response()->json($categories);
     }
