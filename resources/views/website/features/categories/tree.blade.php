@@ -8,7 +8,9 @@
                         Categories tree view
                     </div>
                     <div class="card-body">
-                        {!! $categories_tree !!}
+                        <div class="list-group">
+                            {!! $categories_tree !!}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>API Services</title>
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap-5.2.3-dist/css/bootstrap.min.css') }}" >
+    <link rel="stylesheet" href="{{ URL::asset('assets/fontawesome-free-6.4.2-web/css/all.css') }}" >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
