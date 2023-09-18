@@ -17,6 +17,8 @@ $router->get('/', 'WebsiteController@index');
 
 $router->get('categories', 'CategoryController@index');
 $router->get('categories/{id:\d+}', 'CategoryController@show');
+$router->get('categories-tree', 'CategoryController@treeView');
+
 
 $router->get('products', 'ProductController@index');
 $router->get('products/{id:\d+}', 'ProductController@show');

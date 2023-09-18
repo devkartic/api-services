@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\CategoryRelation;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,80 +12,47 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): object
     {
         $categories = Category::all();
 
         return response()->json($categories);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function treeView(): object
     {
-        //
+        $categories = Category::all();
+        $categories_tree = $this->buildTreeView($categories);
+        return view('website.features.categories.tree', compact('categories_tree'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function buildTreeView($elements, $parent_id = 0): string
     {
-        //
+        $html = '<ul>';
+        foreach ($elements as $element) {
+            if ($element['parent_id'] == $parent_id) {
+                $html .= '<li>' . $element['name'];
+                $html .= $this->buildTreeView($elements, $element['id']); // Recursively call the function for subcategories
+                $html .= '</li>';
+            }
+        }
+        $html .= '</ul>';
+
+        return $html;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id)
+    public function show(int $id): object
     {
         $category = Category::find($id);
 
-        if(empty($category)) return response(view('website.exceptions.404'));
+        if (empty($category)) return response(view('website.exceptions.404'));
 
         return response()->json($category);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
