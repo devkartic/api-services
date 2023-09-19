@@ -15,11 +15,11 @@
                                         $hasChildren = $element->children->isNotEmpty();
                                         if ($hasChildren) {
                                             echo '<li class="list-group-item">';
-                                            echo '<a data-toggle="collapse" href="#">'.$element->name.'</a>';
+                                            echo '<button class="btn btn-collapse btn-sm btn-primary mb-2 text-capitalize" data-toggle="collapse" href="#"><i class="fa fa-plus"></i> '.$element->name.'</button>';
                                             echo '<div class="collapse"><ul class="list-group">';
                                             displayTree($element->children, $level + 1);
                                         } else {
-                                            echo '<li class="list-group-item">'.$element->name.'</li>';
+                                            echo '<li class="list-group-item text-capitalize">'.$element->name.'</li>';
                                         }
                                     }
                                     echo '</ul></div></li>';
@@ -33,8 +33,9 @@
                                     $('[data-toggle="collapse"]').collapse();
 
                                     // Handle the click event on parent elements
-                                    $('.list-group-item a').on('click', function (e) {
+                                    $('.list-group-item button').on('click', function (e) {
                                         e.preventDefault(); // Prevent the default behavior of the anchor link
+                                        $(this).find('i').toggleClass('fa-plus').toggleClass('fa-minus');
                                         $(this).next('.collapse').collapse('toggle'); // Toggle the collapse state of the next element
                                     });
                                 });
