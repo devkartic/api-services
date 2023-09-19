@@ -55,7 +55,6 @@ Navigation styles
 
 .nav-link {
     color: var(--cs-light);
-
     &.active {
         color: var(--cs-purple) !important;
     }
@@ -85,4 +84,18 @@ Footer styles
 .footer-section > .card {
     background: var(--cs-light-blue);
     border-radius: 0 !important;
+}
+
+/* Closed folder icon */
+.folder-closed::before {
+    content: "\f07c"; /* Unicode for a folder icon */
+    font-family: FontAwesome, serif; /* Use an icon font like FontAwesome */
+    margin-right: 5px; /* Adjust spacing */
+}
+
+/* Open folder icon */
+.folder-open::before {
+    content: "\f07b"; /* Unicode for an open folder icon */
+    font-family: FontAwesome, serif;
+    margin-right: 5px;
 }

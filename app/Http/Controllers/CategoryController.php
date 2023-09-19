@@ -19,29 +19,22 @@ class CategoryController extends Controller
         return response()->json($categories);
     }
 
-    public function treeView(): object
+    public function displayCategoryTree(): object
     {
         $categories = Category::all();
-        $categories_tree = $this->buildTreeView($categories);
-        return view('website.features.categories.tree', compact('categories_tree'));
+
+        $tree = $this->buildTree($categories);
+
+
+        return view('website.features.categories.tree', compact('tree'));
     }
 
-    public function buildTreeView($elements, $parent_id = 0, $current_level = 0, $previous_level = -1): string
+    public function buildTree($elements, $parent_id = 0): object
     {
-        $html = '';
-        $padding = 'style="padding-left: ' . 15 * ($current_level + 1) . 'px"';
-        foreach ($elements as $element) {
-            if ($element['parent_id'] == $parent_id) {
-                if ($current_level > $previous_level) $previous_level = $current_level;
-                $current_level++;
-                $html .= '<li class="list-group-item" ' . $padding . '><i class="fa fa-plus"></i> ' . $element['name'] . '-' . $current_level . '-' . $previous_level;
-                $html .= $this->buildTreeView($elements, $element['id'], $current_level, $previous_level); // Recursively call the function for subcategories
-                $current_level--;
-                $html .= '</li>';
-            }
-        }
-
-        return $html;
+        return $elements->where('parent_id', $parent_id)->map(function ($element) use ($elements) {
+            $element->children = $this->buildTree($elements, $element->id);
+            return $element;
+        });
     }
 
     /**
