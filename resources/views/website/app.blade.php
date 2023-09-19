@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('assets/custom/css/style.css') }}" >
+    {{--    Jquery script loading--}}
+    <script type="text/javascript" src="{{ URL::asset('assets/custom/js/jquery-3.7.1.min.js') }}" ></script>
 </head>
 <body>
 {{--Header navbar section--}}
@@ -24,7 +26,6 @@
 @include('website/includes/footer')
 
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/custom/js/jquery-3.7.1.min.js') }}" ></script>
 <script>
     $(document).ready(function() {
         // Toggle child categories on click
