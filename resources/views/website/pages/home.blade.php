@@ -11,11 +11,16 @@
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 List of Categories item
-                                <a href="{{ url('categories') }}" class="btn badge bg-primary rounded-pill text-decoration-none">Browse</a>
+                                <div class="float-end">
+                                    <a href="{{ url('categories-tree') }}" class="btn badge bg-success rounded-pill text-decoration-none">Demo</a>
+                                    <a href="{{ url('categories') }}" class="btn badge bg-primary rounded-pill text-decoration-none">JSON Data</a>
+                                </div>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Single Category
-                                <a href="{{ url('categories/1') }}" class="btn badge bg-primary rounded-pill text-decoration-none">Browse</a>
+                                <div class="float-end">
+                                    <a href="{{ url('categories/1') }}" class="btn badge bg-primary rounded-pill text-decoration-none">JSON Data</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -30,11 +35,15 @@
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 List of Products
-                                <a href="{{ url('products') }}" class="btn badge bg-primary rounded-pill text-decoration-none">Browse</a>
+                                <div class="float-end">
+                                    <a href="{{ url('products') }}" class="btn badge bg-primary rounded-pill text-decoration-none">JSON Data</a>
+                                </div>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Single Product
-                                <a href="{{ url('products/1') }}" class="btn badge bg-primary rounded-pill text-decoration-none">Browse</a>
+                                <div class="float-end">
+                                    <a href="{{ url('products/1') }}" class="btn badge bg-primary rounded-pill text-decoration-none">JSON Data</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
