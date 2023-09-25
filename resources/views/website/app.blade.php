@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>API Services</title>
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap-5.2.3-dist/css/bootstrap.min.css') }}" >
+    <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js') }}"></script>
     <link rel="stylesheet" href="{{ URL::asset('assets/fontawesome-free-6.4.2-web/css/all.css') }}" >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,15 +26,5 @@
 {{--Footer section--}}
 @include('website/includes/footer')
 
-<script type="text/javascript" src="{{ URL::asset('assets/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        // Toggle child categories on click
-        $('.folder-icon').click(function() {
-            $(this).toggleClass('folder-open folder-closed');
-            $(this).siblings('ul').toggle();
-        });
-    });
-</script>
 </body>
 </html>
