@@ -5,7 +5,7 @@
         <div class="row cs-pb-30">
             <div class="col-md-6 cs-mt-30">
                 <div class="card">
-                    <div class="card-header"><button class="btn btn-sm btn-default fw-bold fs-6">Categories tree view</button><a href="#" class="float-end btn btn-sm btn-outline-warning">Source</a></div>
+                    <div class="card-header"><button class="btn btn-sm btn-default fw-bold fs-6">Categories tree view</button><a href="#" class="float-end btn btn-sm btn-warning">Source</a></div>
                     <div class="card-body">
                         <ul id="cs_tree">
                             <li><a href="#">Categories</a>
